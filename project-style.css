@@ -1,0 +1,69 @@
+.heading{
+        text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: rgb(251, 250, 249);
+}
+
+.portfolio-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    margin: 10px 10px;
+}
+
+.project-card {
+    background-color: rgb(42, 41, 41);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 350px;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.project-screenshot {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 20px;
+    color: white;
+}
+
+.project-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.project-technologies {
+    margin-bottom: 20px;
+}
+
+.tech-tag {
+    background-color: rgb(109, 108, 108);
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+
+.project-links .button {
+    margin-right: 10px;
+}

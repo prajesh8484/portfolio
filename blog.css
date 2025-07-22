@@ -1,0 +1,58 @@
+
+/* Custom styles for the blog page */
+
+.container {
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(118, 118, 118);
+    min-height: calc(100vh - 80px); /* Adjust based on header height */
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.blog-post {
+    display: inline-block;
+    vertical-align: top;
+    width: 60vw;
+    background-color: rgb(47, 47, 47);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: scale(1.02);
+    box-shadow: 1px 1px 15px rgba(107, 106, 106, 0.8);
+}
+
+.blog-post h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.blog-post small {
+    font-size: 13px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+@media (max-width: 768px) {
+    .blog-post {
+        width: 90%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+}
