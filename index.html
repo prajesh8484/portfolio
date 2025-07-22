@@ -1,11 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Prajesh - Portfolio</title>
+    <link rel="icon" href="assets/favicons/index-favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Sour Gummy", sans-serif;
+            font-weight: 580;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: rgb(109, 108, 108);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(165, 165, 166, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo a {
+            font-size: 24px;
+            color: rgb(9, 9, 9);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: black;
+            font-size: 0.9em;
+            margin: 0 15px;
+            text-decoration: none;
+            padding: 10px 5px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .nav-links a:hover {
+            color: rgb(42, 41, 41);
+            transform: translateY(-3px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: rgb(42, 41, 41);
+            transition: width 0.3s, left 0.3s;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-links a.active {
+            color: rgb(42, 41, 41);
+        }
+
+        .header .social-links a {
+            color: black;
+            font-size: 1.2em;
+            margin-left: 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .header .social-links a:hover {
+            color: rgb(42, 41, 41);
+            transform: scale(1.2);
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            color: rgb(251, 250, 249);
+            min-height: 100vh;
+            width: 100vw;
+            padding: 20px;
+            background-color: rgb(101, 101, 101);
+            align-items: center;
+        }
+
+        .image {
+            margin: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icebear {
+            height: 250px;
+            width: 260px;
+            border-radius: 50%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .icebear:hover {
+            transform: scale(1.05);
+            box-shadow: 1px 1px 20px rgba(158, 148, 148, 0.9);
+        }
+
+        .info {
+            font-size: 1.2em;
+            text-align: center;
+            width: 38vw;
+            height: auto;
+            padding: 20px;
+            margin: 70px;
+            border-radius: 10px;
+            background-color: rgb(42, 41, 41);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .info:hover {
+            transform: translateY(-10px);
+            box-shadow: 1px 1px 20px rgba(18, 18, 18, 0.9);
+        }
+
+        .info.social-links {
+            display: flex;
+            justify-content:center;
+            vertical-align: middle;
+            align-items: center;
+        }
+
+        .info .social-links a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .info .social-links a:hover {
+            color: rgb(144, 144, 144);
+            transform: scale(1.1);
+        }
+
+        p {
+            margin-bottom: 10px;
+            display: block;
+            padding: 15px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .section {
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+
+        .section-contact {
+            padding: 100px 20px;
+            border-bottom: 1px solid rgb(82, 82, 82);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section:nth-of-type(odd) {
+            background-color: rgb(101, 101, 101);
+        }
+
+        .section:nth-of-type(even) { 
+            background-color: rgb(118, 118, 118);
+        }
+
+        .section:last-of-type {
+            background-color: rgb(42, 41, 41);
+    }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: rgb(251, 250, 249);
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill {
+            background-color: rgb(42, 41, 41);
+            color: white;
+            padding: 11px;
+            border-radius: 12px;
+            width: 134px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+            box-shadow: 1px 1px 15px rgba(18, 18, 18, 0.8);
+        }
+
+        .skill i {
+            font-size: 3.5em;
+            margin-bottom: 1px;
+        }
+
+        .experience-item {
+            background-color: rgb(42, 41, 41);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 1px 1px 15px rgba(18, 18, 18, 0.8);
+        }
+
+        .footer {
+            background-color: rgb(165, 165, 166);
+            padding: 120px 40px;
+        }
+
+        .footersection.social-links {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            margin-top: 20px;
+        }
+
+        .contact-container {
+            background-color: rgb(42, 41, 41);
+            color: white;            
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-info h3, .contact-form h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+        }
+
+        .contact-info p {
+            padding: 0;
+            font-size: 1em;
+            line-height: 1.6;
+            color: rgb(250, 250, 250);
+        }
+
+        .footer.social-links {
+            margin-top: 20px;
+        }
+
+        .footer .social-links a {
+            color: rgb(249, 249, 249);
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer .social-links a:hover {
+            color: rgb(179, 179, 179);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-button {
+            display: inline-block;
+            font-size: 1em;
+            border-radius: 10px;
+            padding: 15px 80px;
+            font-size: 1em;
+            border-radius: 10px;
+            margin: 0.5rem;
+            border: 0px;
+            background-color: rgb(233, 232, 232);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .contact-button:hover {
+            background-color: rgb(195, 195, 195);
+            transform: scale(1.05);
+        }
+
+        .contact-form p {
+            padding: 0px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 10px;
+            background-color: rgb(195, 195, 195);
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: rgb(233, 232, 232);
+            transform: scale(1.05);
+        }
+
+        .footer-text {
+            position: absolute;
+            text-align: center;
+            font-size: 13px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: gray;
+            bottom: 1px;
+            font-weight: 550;
+            padding: 10px;
+        }
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon-link {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.social-icon-link .fab,   
+.custom-icon {             
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  vertical-align: -.125em;       
+  transition: transform 0.3s, filter 0.3s;
+  filter: invert(1);              
+}
+
+.social-icon-link:hover .fab,
+.social-icon-link:hover .custom-icon {
+  transform: scale(1.02);
+  filter: invert(0.6);
+}
+
+ .hackerrank-icon {
+  width: 1.1em;
+  height: 1.0em;
+
+}
+
+
+
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <center><h1>Welcome to my portfolio</h1></center>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html">Prajesh</a>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link"><i class="fas fa-user"></i>About</a>
+                <a href="#skills" class="nav-link"><i class="fas fa-cogs"></i>Skills</a>
+                <a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i>Experience</a>
+                <a href="#projects" class="nav-link"><i class="fas fa-folder-open"></i>Projects</a>
+                <a href="#blog" class="nav-link"><i class="fas fa-newspaper"></i>Blog</a>
+                <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i>Contact</a>
+                <a href="assets/LatestResume.pdf" target="_blank" class="nav-link"><i class="fas fa-file-alt"></i>Resume</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/prajesh8484" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/prajeshgaikwad" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/gaikwadprajesh" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="main section">
+        <div class="image">
+            <img class="icebear" src="assets/ice bear 2.jpg" height="300" width="310"
+                alt="Literally me">
+        </div>
+        <div class="info">
+            <h3>- Hey, I'm Prajesh!</h3>
+            <p>I'm a passionate fourth-year student with a strong foundation in computer science. I'm currently improving my skills in TypeScript and backend development, with a keen interest in Blockchain & GameDev. I enjoy tackling new challenges and learning new technologies.
+                <br><br>I have experience with Java, Python, C/C++, and JavaScript, and I'm always eager to expand my knowledge. I'm actively seeking opportunities to apply my skills and contribute to exciting projects.
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/prajesh8484" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/prajeshgaikwad" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/gaikwadprajesh" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://leetcode.com/u/Prajesh8484/" target="_blank" class="social-icon-link">
+      <img src="assets/icons/leetcode.svg" alt="HackerRank" class="custom-icon hackerrank-icon" />
+    </a>    <a href="https://www.hackerrank.com/profile/prajesh_gaikwad" target="_blank" class="social-icon-link">
+      <img src="assets/icons/hackerrank.svg" alt="HackerRank" class="custom-icon hackerrank-icon" />
+    </a>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <i class="fab fa-java"></i>
+                <p>Java</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-python"></i>
+                <p>Python</p>
+            </div>
+            <div class="skill">
+    <i class="fas fa-code"></i>
+    <p>C/C++</p>
+</div>
+            <div class="skill">
+                <i class="fab fa-html5"></i>
+                <p>HTML</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-css3-alt"></i>
+                <p>CSS</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-js-square"></i>
+                <p>JavaScript</p>
+            </div>
+            <div class="skill">
+                <i class="fab fa-git-alt"></i>
+                <p>Git</p>
+            </div>
+
+<!-- MERN Stack Skills -->
+<div class="skill">
+    <i class="fab fa-react"></i>
+    <p>React</p>
+</div>
+<div class="skill">
+    <i class="fas fa-wind"></i>
+    <p>Tailwind</p>
+</div>
+
+<div class="skill">
+    <i class="fas fa-server"></i>
+    <p>Node.js</p>
+</div>
+<div class="skill">
+    <i class="fas fa-database"></i>
+    <p>MongoDB</p>
+</div>
+
+<div class="skill">
+    <i class="fab fa-node-js"></i>
+    <p>Express.js</p>
+</div>
+
+<div class="skill">
+    <i class="fab fa-docker"></i>
+    <p>Docker</p>
+</div>
+<div class="skill">
+    <i class="fab fa-linux"></i>
+    <p>Linux</p>
+</div>
+
+        </div>
+    </div>
+
+    <div id="experience" class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-item">
+            <h3>MERN Intern</h3>
+            <p><strong>Techno Growth Software Solutions | Warje, Pune | Dec 2024 – Jan 2025</strong></p>
+            <p>
+                <ul>
+                    <li>Developed and maintained web applications using React and Node.js</li>
+                    <li>Developed a student management system with features for enrollment, attendance, and performance tracking</li>
+                    <li>Integrated secure authentication and responsive UI for seamless interaction.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <div id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="color: white; font-size: 1.2em; text-align: center;">I love bringing ideas to life through code. Here are some of the projects I've worked on, showcasing my skills in web development and problem-solving.</p>
+            <a href="Project.html" class="button" style="margin-top: 20px;">View All Projects</a>
+        </div>
+    </div>
+
+    <div id="blog" class="section">
+        <h2 class="section-title">Blog</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="color: white; font-size: 1.2em; text-align: center;">I enjoy writing about my experiences and sharing my knowledge with the community. Check out my latest blog posts for insights into my projects, learning journey, and thoughts on technology.</p>
+            <a href="blog.html" class="button" style="margin-top: 20px;">Read My Blog</a>
+        </div>
+    </div>
+
+    <div id="contact" class="footer section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out to me through my email or social media channels.</p>
+                <div class="footersection social-links">
+                    <a href="https://github.com/prajesh8484" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/prajeshgaikwad" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/gaikwadprajesh" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Contact Me</h3>
+                <p>Don't have much to say? Just say hi!</p>
+                    <a href="mailto:prajesh.gaikwad2004@gmail.com">
+                         <button class="contact-button">Say Hi</button>
+                    </a>
+            </div>
+
+        </div>
+            <p class="footer-text">
+            © 2025 Prajesh Gaikwad All rights reserved <br>All images and icons belong to their respective owners.
+            </p>
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
+
 </html>

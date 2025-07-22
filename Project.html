@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Prajesh</title>
+    <link rel="icon" href="assets/favicons/projects-favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Sour Gummy", sans-serif;
+            font-weight: 600;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: rgb(109, 108, 108);
+        }
+
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(165, 165, 166, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo a {
+            font-size: 24px;
+            color: rgb(9, 9, 9);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: black;
+            font-size: 0.9em;
+            margin: 0 15px;
+            text-decoration: none;
+            padding: 10px 5px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .nav-links a:hover {
+            color: rgb(42, 41, 41);
+            transform: translateY(-3px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: rgb(42, 41, 41);
+            transition: width 0.3s, left 0.3s;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-links a.active {
+            color: rgb(42, 41, 41);
+        }
+
+        .header .social-links a {
+            color: black;
+            font-size: 1.2em;
+            margin-left: 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .header .social-links a:hover {
+            color: rgb(42, 41, 41);
+            transform: scale(1.2);
+        }
+
+        .container {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: rgb(251, 250, 249);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: rgb(42, 41, 41);
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 1px 1px 20px rgba(18, 18, 18, 0.9);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            font-size: 1em;
+            margin-bottom: 25px;
+        }
+
+        .project-links a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 1.3em;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: rgb(144, 144, 144);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html">Prajesh</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link"><i class="fas fa-user"></i>About</a>
+                <a href="index.html#skills" class="nav-link"><i class="fas fa-cogs"></i>Skills</a>
+                <a href="index.html#experience" class="nav-link"><i class="fas fa-briefcase"></i>Experience</a>
+                <a href="index.html#projects" class="nav-link"><i class="fas fa-folder-open"></i>Projects</a>
+                <a href="index.html#blog" class="nav-link"><i class="fas fa-newspaper"></i>Blog</a>
+                <a href="index.html#contact" class="nav-link"><i class="fas fa-envelope"></i>Contact</a>
+                <a href="assets/LatestResume.pdf" target="_blank" class="nav-link"><i class="fas fa-file-alt"></i>Resume</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/prajesh8484" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/prajeshgaikwad" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/gaikwadprajesh" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="assets/project_screenshots/weatheru_screenshot.png" alt="Rock Paper Scissors Project Image">
+                <div class="project-info">
+                    <h3>WeatherU</h3>
+                    <p>A lightweight and responsive weather application built using React.js</p>
+                    <div class="project-links">
+                        <a href="https://theweatheru.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/prajesh8484WeatherU" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/828282/white?text=Pythonbot" alt="Palindrome Checker Project Image">
+                <div class="project-info">
+                    <h3>pythonbot</h3>
+                    <p>A general purpose <b>Discord</b> bot built with <b>Nextcord</b>. The bot is designed to be easily customizable and extendable</p>
+                    <div class="project-links">
+                        <a href="https://github.com/prajesh8484pythonbot" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/828282/white?text=Future+Project" alt="Future Project Image">
+                <div class="project-info">
+                    <h3>Future Project</h3>
+                    <p>Cooking something really hard!</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
