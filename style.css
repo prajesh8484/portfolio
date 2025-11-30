@@ -11,6 +11,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,6 +44,16 @@ body {
     font-size: 24px;
     color: rgb(9, 9, 9);
     text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 1.8rem;
+    color: black;
 }
 
 .nav-links {
@@ -109,7 +120,7 @@ body {
     text-align: center;
     color: rgb(251, 250, 249);
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     padding: 20px;
     background-color: rgb(101, 101, 101);
     align-items: center;
@@ -265,9 +276,15 @@ p {
     box-shadow: 1px 1px 15px rgba(18, 18, 18, 0.8);
 }
 
+.experience-item ul {
+    margin-left: 10px;
+}
+
 .footer {
-    background-color: rgb(165, 165, 166);
-    padding: 120px 40px;
+    background-color: rgb(42, 41, 41);
+    padding: 120px 40px 0 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .footersection.social-links {
@@ -330,7 +347,7 @@ p {
     padding: 15px 80px;
     font-size: 1em;
     border-radius: 10px;
-    margin: 0.5rem;
+    margin: 0.5rem 0rem;
     border: 0px;
     background-color: rgb(233, 232, 232);
     cursor: pointer;
@@ -363,17 +380,27 @@ p {
     transform: scale(1.05);
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 36px 10px 0px 10px;
+    margin-top: auto;
+}
+
 .footer-text {
-    position: absolute;
     text-align: center;
     font-size: 13px;
-    left: 50%;
-    transform: translateX(-50%);
     color: gray;
-    bottom: 1px;
     font-weight: 550;
-    padding: 10px;
 }
+
+footer p {
+    margin-bottom: 0;
+    padding: 6px;
+    padding-bottom: 10px;
+}
+
 
 .social-links {
   display: flex;
@@ -467,8 +494,117 @@ p {
 }
 
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
     .header {
         padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 101;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 80vh;
+        background-color: rgba(165, 165, 166, 0.98);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        border-radius: 10px;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0%);
+    }
+
+    .nav-links a {
+        margin: 20px 0;
+        font-size: 1.2em;
+    }
+
+    .main {
+        flex-direction: column;
+        padding-top: 100px; 
+    }
+
+    .image {
+        margin: 20px;
+    }
+
+    .icebear {
+        height: 200px;
+        width: 210px;
+    }
+
+    .info {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-info p, .contact-form p {
+        text-align: center;
+    }
+
+    .contact-form {
+        margin-top: 4rem;
+    }
+
+    .footersection.social-links {
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+    
+    .experience-item {
+        padding: 15px;
+    }
+
+    .skills-container {
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .skill {
+        width: calc(33.33% - 14px); 
+        padding: 10px 5px;
+        border-radius: 8px;
+    }
+
+    .skill i {
+        font-size: 2em;
+        margin-top: 13px;
+    }
+
+    .skill p {
+        font-size: 0.8em;
+        margin-bottom: 4px;
+    }
+
+    .footer-text {
+    font-size: 10px;
     }
 }
   

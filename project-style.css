@@ -1,5 +1,5 @@
 .section{
-    background-color: rgb(101, 101, 101) !important;
+    background-color: rgb(101, 101, 101);
 }
 
 .heading{
@@ -70,5 +70,18 @@
 
 .project-links .button {
     margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .portfolio-container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .project-card {
+        width: 90%;
+        margin: 20px 0;
+    }
 }
 
